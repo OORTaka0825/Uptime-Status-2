@@ -6,9 +6,9 @@
         alt="Logo" 
         class="w-8 h-8 sm:w-10 sm:h-10"
       />
-      <h1 class="text-lg sm:text-2xl font-bold text-gray-800 dark:text-gray-100">
-        {{ title }}
-      </h1>
+      <h1 class="text-lg sm:text-2xl font-bold text-emerald-500 dark:text-gray-100">
+  {{ title }}
+</h1>
     </div>
     <div class="flex items-center gap-3">
       <button
