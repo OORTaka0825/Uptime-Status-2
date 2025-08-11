@@ -12,22 +12,62 @@
     <meta name="copyright" content="梦爱吃鱼" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+
     <!-- 统计 -->
     <script defer src="https://um.ruom.top/script.js" data-website-id="ef582935-916b-40a8-888c-918415a49f20"></script>
+
     <!-- 字体 -->
     <link rel="stylesheet" href="https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css">
+
     <script>
       if (false || (!!window.MSInputMethodContext && !!document.documentMode))
         window.location.href =
           'https://support.dmeng.net/upgrade-your-browser.html?referrer=' +
           encodeURIComponent(window.location.href);
     </script>
+
     <!-- 禁用右键 -->
     <script>
       document.oncontextmenu = function () {
         return false;
       };
     </script>
+
+    <!-- 全局背景：把下面两条链接换成你的图片；支持系统暗色 & html.dark 手动切换 -->
+    <style id="global-bg-style">
+      :root {
+        /* 白天背景图（浅色模式） */
+        --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg');
+      }
+      /* 系统暗色偏好时自动切换 */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg');
+        }
+      }
+      /* 若项目用 Tailwind 的 dark 模式（html 上有 .dark），也会切换 */
+      html.dark {
+        --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg');
+      }
+      /* 背景层：不影响内容交互与滚动 */
+      html, body {
+        height: 100%;
+        background: transparent;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: var(--page-bg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;           /* 放在内容下方 */
+        pointer-events: none;  /* 不挡交互 */
+      }
+      /* 可选：如果内容有透明底，增强可读性（按需启用） */
+      /* #app { background: rgb(255 255 255 / 60%); backdrop-filter: blur(2px); } */
+    </style>
   </head>
   <body>
     <div id="app"></div>
