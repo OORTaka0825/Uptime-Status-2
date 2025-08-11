@@ -2,12 +2,12 @@
   "name": "uptime-status",
   "version": "1.0.0",
   "private": true,
-  "author": "JLinmr",
-  "url": "https://www.bsgun.cn",
-  "email": "ruoms@qq.com",
+  "author": "Taka",
+  "url": "https://oortaka.top",
+  "email": "https://mail.google.com/mail/?view=cm&fs=1&to=oortaka0825@gmail.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JLinmr/Uptime-Status"
+    "url": "https://github.com/OORTaka0825/Uptime-Status-2"
   },
   "type": "module",
   "scripts": {
