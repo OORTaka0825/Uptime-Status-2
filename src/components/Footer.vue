@@ -33,7 +33,7 @@
     <div class="flex flex-col items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
       <div class="flex items-center gap-6">
         <a 
-          :href="pkg.repository.url"
+          :href="repoUrl"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center p-1.5 rounded-full transition-colors duration-200
@@ -44,7 +44,7 @@
           <Icon icon="ri:github-line" class="w-5 h-5" />
         </a>
         <a 
-          :href="pkg.url"
+          :href="siteUrl"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center p-1.5 rounded-full transition-colors duration-200
@@ -55,7 +55,7 @@
           <Icon icon="carbon:home" class="w-5 h-5" />
         </a>
         <a 
-          :href="mailto:${pkg.email}"
+          :href="mailLink"
           class="inline-flex items-center justify-center p-1.5 rounded-full transition-colors duration-200
             text-gray-400 hover:text-gray-600 hover:bg-gray-200
             dark:text-gray-500 dark:hover:text-gray-400 dark:hover:bg-gray-700
@@ -67,11 +67,11 @@
       <div class="flex flex-col items-center gap-1">
         <div>
           <a 
-            :href="pkg.repository.url" 
+            :href="repoUrl" 
             target="_blank" 
             rel="noopener noreferrer"
             class="font-semibold hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
-          >Uptime-Status</a> Version {{ pkg.version }}
+          >Uptime-Status</a> Version {{ appVer }}
         </div>
         <div>
           基于 <a 
@@ -82,8 +82,8 @@
           >UptimeRobot</a> 接口 | 检测频率 5 分钟
         </div>
         <div>
-          Copyright © 2020 - {{ new Date().getFullYear() }} <a 
-            :href="pkg.repository.url"
+          Copyright © 2020 - {{ yearNow }} <a 
+            :href="repoUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="font-semibold hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
@@ -97,38 +97,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import pkg from '../../package.json'
 
-/**
- * 控制返回顶部按钮的显示
- */
 const showBackToTop = ref(false)
 const SCROLL_THRESHOLD = 300
 
-/**
- * 监听滚动事件
- */
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > SCROLL_THRESHOLD
 }
 
-/**
- * 平滑滚动到顶部
- */
 const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-</script> 
+/* 简化并避免模板里的复杂表达式 */
+const repoUrl  = pkg.repository?.url || '#'
+const siteUrl  = pkg.url || '#'
+const mailLink = computed(() => 'mailto:' + (pkg.email || ''))
+const appVer   = pkg.version || ''
+const yearNow  = new Date().getFullYear()
+</script>
