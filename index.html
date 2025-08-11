@@ -67,13 +67,25 @@
 </style>
 
 
-    <!-- 白天模式 footer 文字绿色 -->
-    <style id="footer-light-green">
-      html:not(。dark) footer .text-sm，
-      html:not(。dark) footer .text-sm a {
-        color: #16a34a !important; /* green-600 */
-      }
-    </style>
+<!-- 白天模式 footer 文字绿色 -->
+<style id="footer-light-green">
+  html:not(.dark) footer .text-sm,
+  html:not(.dark) footer .text-sm a {
+    color: #10B981 !important; /* 这种绿色 */
+  }
+</style>
+
+<!-- 白天模式下，左上角文字和图标变绿 -->
+<style id="header-light-green">
+  html:not(.dark) .text-2xl,
+  html:not(.dark) .text-2xl *,
+  html:not(.dark) .flex.items-center svg {
+    color: #10B981 !important;
+    fill: #10B981 !important; /* 针对部分 SVG */
+  }
+</style>
+
+
   </head>
   <body>
     <div id="app"></div>
