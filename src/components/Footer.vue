@@ -14,7 +14,7 @@
         @click="scrollToTop"
         class="fixed bottom-20 right-6 p-3 rounded-full shadow-lg 
           bg-white dark:bg-gray-800 
-          text-green-600 dark:text-gray-300
+          text-gray-600 dark:text-gray-300
           hover:bg-gray-50 dark:hover:bg-gray-700
           border border-gray-200 dark:border-gray-700
           transition-all duration-200 z-50
@@ -24,7 +24,7 @@
           icon="carbon:arrow-up" 
           class="w-6 h-6 transition-transform duration-200 
             group-hover:-translate-y-0.5
-            text-green-600 dark:text-gray-300
+            text-gray-600 dark:text-gray-300
             group-hover:text-emerald-500 dark:group-hover:text-emerald-400" 
         />
       </button>
@@ -37,7 +37,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center p-1.5 rounded-full transition-colors duration-200
-            text-green-600 hover:text-gray-600 hover:bg-gray-200
+            text-gray-400 hover:text-gray-600 hover:bg-gray-200
             dark:text-gray-500 dark:hover:text-gray-400 dark:hover:bg-gray-700
             box-content"
         >
@@ -48,16 +48,16 @@
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center p-1.5 rounded-full transition-colors duration-200
-            text-green-600 hover:text-gray-600 hover:bg-gray-200
+            text-gray-400 hover:text-gray-600 hover:bg-gray-200
             dark:text-gray-500 dark:hover:text-gray-400 dark:hover:bg-gray-700
             box-content"
         >
           <Icon icon="carbon:home" class="w-5 h-5" />
         </a>
         <a 
-          :href="`mailto:${pkg.email}`"
+          :href="mailto:${pkg.email}"
           class="inline-flex items-center justify-center p-1.5 rounded-full transition-colors duration-200
-            text-green-600 hover:text-gray-600 hover:bg-gray-200
+            text-gray-400 hover:text-gray-600 hover:bg-gray-200
             dark:text-gray-500 dark:hover:text-gray-400 dark:hover:bg-gray-700
             box-content"
         >
@@ -70,7 +70,7 @@
             :href="pkg.repository.url" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="font-semibold text-green-600 hover:text-emerald-500 dark:text-gray-400 dark:hover:text-emerald-400 transition-colors"
+            class="font-semibold hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
           >Uptime-Status</a> Version {{ pkg.version }}
         </div>
         <div>
@@ -78,7 +78,7 @@
             href="https://uptimerobot.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="font-semibold text-green-600 hover:text-emerald-500 dark:text-gray-400 dark:hover:text-emerald-400 transition-colors"
+            class="font-semibold hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
           >UptimeRobot</a> 接口 | 检测频率 5 分钟
         </div>
         <div>
@@ -86,7 +86,7 @@
             :href="pkg.repository.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="font-semibold text-green-600 hover:text-emerald-500 dark:text-gray-400 dark:hover:text-emerald-400 transition-colors"
+            class="font-semibold hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
           >
             JLinmr
           </a>
@@ -101,16 +101,25 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { Icon } from '@iconify/vue'
 import pkg from '../../package.json'
 
+/**
+ * 控制返回顶部按钮的显示
+ */
 const showBackToTop = ref(false)
 const SCROLL_THRESHOLD = 300
 
+/**
+ * 监听滚动事件
+ */
 const handleScroll = () => {
   showBackToTop.value = window.scrollY > SCROLL_THRESHOLD
 }
 
+/**
+ * 平滑滚动到顶部
+ */
 const scrollToTop = () => {
   window.scrollTo({
-    top: 0，
+    top: 0,
     behavior: 'smooth'
   })
 }
@@ -122,4 +131,4 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
-</script>
+</script> 
