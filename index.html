@@ -31,21 +31,40 @@
       document.oncontextmenu = function () { return false; };
     </script>
 
-    <!-- 全局背景 -->
-    <style id="global-bg-style">
-      :root { --page-bg: url('https://oortaka.top/upload/13-tuya.jpg'); }
-      @media (prefers-color-scheme: dark) {
-        :root { --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg'); }
-      }
-      html。dark { --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg'); }
-      html, body { height: 100%; background: transparent; }
-      body::before {
-        content: ""; position: fixed; inset: 0;
-        background-image: var(--page-bg);
-        background-size: cover; background-position: center; background-repeat: no-repeat;
-        z-index: -1; pointer-events: none;
-      }
-    </style>
+    <!-- 白天 / 夜晚背景图 -->
+<style id="global-bg-style">
+  /* 白天背景图（浅色模式） */
+  :root {
+    --page-bg: url('https://oortaka.top/upload/13-tuya.jpg'); /* 白天图 */
+  }
+
+  /* 系统暗色模式 或 html.dark 手动暗色模式时的背景 */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg'); /* 夜晚图 */
+    }
+  }
+  html.dark {
+    --page-bg: url('https://oortaka.top/upload/wallhaven-5g86w1-tuya.jpg'); /* 夜晚图 */
+  }
+
+  /* 背景铺满并置于最底层 */
+  html, body {
+    height: 100%;
+    background: transparent;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: var(--page-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
+  }
+</style>
 
     <!-- 白天模式 footer 文字绿色 -->
     <style id="footer-light-green">
